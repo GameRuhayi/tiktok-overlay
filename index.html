@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overlay Test</title>
+  <style>
+    /* İframe'i şeffaf ve tam ekran olarak ayarla */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: transparent;
+    }
+
+    /* Iframe yerleşimi */
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* Iframe kenarlığını kaldır */
+      background-color: transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Iframe ile dışarıdan gelen URL'yi yerleştir -->
+  <iframe src="https://d27cc56c-e5b6-4b98-aedf-5df6b024019f-00-1lm32ot3lfdez.sisko.replit.dev"
+    allow="autoplay; encrypted-media" />
+</body>
+
+</html>

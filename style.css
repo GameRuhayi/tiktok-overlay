@@ -1,0 +1,22 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  /* Şeffaf arka plan */
+  width: 100%;
+  height: 100%;
+}
+
+#gift-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  z-index: 10000;
+  /* Yüksek z-index, üstte görünmesi için */
+  text-align: center;
+}
