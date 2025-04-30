@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +40,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Hediye kutusunu ekliyoruz -->
     <div id="gift-box"></div>
@@ -51,20 +49,34 @@
         allow="autoplay; encrypted-media"></iframe>
 
     <script>
+        // URL parametrelerini alıyoruz
         const urlParams = new URLSearchParams(window.location.search);
-        const gift = urlParams.get('gift');
+        const gift = urlParams.get('gift'); // URL'deki 'gift' parametresini alıyoruz
 
         if (gift) {
             const box = document.getElementById('gift-box');
             box.innerText = `🎁 Hediye Geldi: ${gift}`;
             box.style.display = 'block'; // Hediye kutusunu göster
 
-            // Hediye kutusunun kaybolması için süreyi 5 saniyeye ayarla
+            // 5 saniye sonra kutuyu gizle
             setTimeout(() => {
                 box.style.display = 'none';
             }, 5000); // 5 saniye sonra kutu kaybolur
         }
+
+        // TikTok Live Studio URL parametresi değiştiğinde güncelleme
+        // Ekranda görünen mesajı dinamik olarak günceller
+        window.addEventListener("hashchange", function() {
+            const newGift = new URLSearchParams(window.location.search).get('gift');
+            if (newGift) {
+                const box = document.getElementById('gift-box');
+                box.innerText = `🎁 Yeni Hediye: ${newGift}`;
+                box.style.display = 'block';
+                setTimeout(() => {
+                    box.style.display = 'none';
+                }, 5000);
+            }
+        });
     </script>
 </body>
-
 </html>
