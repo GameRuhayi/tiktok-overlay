@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overlay Test</title>
     <style>
         /* Sayfa ve iframe ayarları */
-        html,
-        body {
+        html, body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            background: transparent; /* Şeffaf arka plan */
-            width: 100%;
             height: 100%;
+            background-color: transparent;
+            overflow: hidden;
         }
 
         iframe {
@@ -27,25 +24,22 @@
             background-color: transparent;
         }
 
-        /* Hediye kutusu stil */
         #gift-box {
-            position: absolute;
-            top: 50%;
+            position: fixed;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            color: white;
-            z-index: 10000; /* Yüksek z-index, üstte görünmesi için */
-            text-align: center;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
             display: none; /* Başlangıçta gizli */
         }
     </style>
 </head>
-
 <body>
-    <!-- Hediye kutusunu ekliyoruz -->
     <div id="gift-box"></div>
-    <!-- Iframe ile dışarıdan gelen URL'yi yerleştir -->
     <iframe src="https://d27cc56c-e5b6-4b98-aedf-5df6b024019f-00-1lm32ot3lfdez.sisko.replit.dev"
         allow="autoplay; encrypted-media"></iframe>
 
@@ -60,15 +54,9 @@
 
             // 5 saniye sonra kutuyu gizle
             setTimeout(() => {
-                box.style.display = 'none'; // Kutuyu gizle
+                box.style.display = 'none';
             }, 5000);
-
-            // Alternatif olarak, yazıyı 5 saniye sonra boşaltabilirsin
-            // setTimeout(() => {
-            //     box.innerText = ''; // Yazıyı temizle
-            // }, 5000);
         }
     </script>
 </body>
-
 </html>
