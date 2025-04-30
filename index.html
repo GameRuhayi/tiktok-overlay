@@ -23,24 +23,34 @@
       width: 100%;
       height: 100%;
       border: none;
+      /* Iframe kenarlığını kaldır */
       background-color: transparent;
     }
 
+    /* Hediye kutusunun stilini ayarla */
     #gift-box {
-      position: absolute;
-      top: 10%;
+      position: fixed;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      font-size: 30px;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
       color: white;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-      visibility: hidden; /* Başlangıçta gizle */
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 10px;
+      display: none;
     }
   </style>
 </head>
 
 <body>
+  <!-- Hediye kutusu -->
   <div id="gift-box"></div>
+
+  <!-- Iframe ile dışarıdan gelen URL'yi yerleştir -->
+  <iframe src="https://d27cc56c-e5b6-4b98-aedf-5df6b024019f-00-1lm32ot3lfdez.sisko.replit.dev"
+    allow="autoplay; encrypted-media" />
+  
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const gift = urlParams.get('gift');
@@ -48,16 +58,15 @@
     if (gift) {
       const box = document.getElementById('gift-box');
       box.innerText = `🎁 Hediye Geldi: ${gift}`;
-
-      // Hediye geldiğinde görünür yap
-      box.style.visibility = 'visible';
+      box.style.display = 'block';  // Hediye kutusunu göster
 
       // 5 saniye sonra gizle
       setTimeout(() => {
-        box.style.visibility = 'hidden';
-      }, 5000); // 5000 ms = 5 saniye
+        box.style.display = 'none';  // Hediye kutusunu gizle
+      }, 5000);  // 5000 ms = 5 saniye
     }
   </script>
+
 </body>
 
 </html>
