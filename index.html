@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overlay Test</title>
+  <title>Overlay</title>
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background-color: transparent;
+      overflow: hidden;
     }
-
-    iframe {
+    #gift-box {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      background-color: transparent;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      font-size: 24px;
+      padding: 10px 20px;
+      border-radius: 10px;
     }
   </style>
 </head>
-
 <body>
-  <iframe src="https://d27cc56c-e5b6-4b98-aedf-5df6b024019f-00-1lm32ot3lfdez.sisko.replit.dev"
-    allow="autoplay; encrypted-media"></iframe>
-</body>
+  <div id="gift-box" style="display: none;"></div>
 
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const gift = urlParams.get("gift");
+
+    if (gift) {
+      const box = document.getElementById("gift-box");
+      box.innerText = `🎁 ${gift}`;
+      box.style.display = "block";
+
+      setTimeout(() => {
+        box.style.display = "none";
+      }, 5000);
+    }
+  </script>
+</body>
 </html>
