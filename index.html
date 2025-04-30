@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overlay Test</title>
-  <style>
-    /* İframe'i şeffaf ve tam ekran olarak ayarla */
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: transparent;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlay Test</title>
+    <style>
+        /* Sayfa ve iframe ayarları */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: transparent;
+        }
 
-    /* Iframe yerleşimi */
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      background-color: transparent;
-    }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+        }
 
-    #gift-box {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 30px;
-      color: white;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-      visibility: hidden; /* Başlangıçta gizle */
-    }
-  </style>
+        #gift-box {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: none; /* Başlangıçta gizli */
+        }
+    </style>
 </head>
-
 <body>
-  <div id="gift-box"></div>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const gift = urlParams.get('gift');
+    <!-- Hediye kutusunu ekliyoruz -->
+    <div id="gift-box"></div>
+    <!-- Iframe ile dışarıdan gelen URL'yi yerleştir -->
+    <iframe src="https://d27cc56c-e5b6-4b98-aedf-5df6b024019f-00-1lm32ot3lfdez.sisko.replit.dev"
+        allow="autoplay; encrypted-media"></iframe>
 
-    if (gift) {
-      const box = document.getElementById('gift-box');
-      box.innerText = `🎁 Hediye Geldi: ${gift}`;
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const gift = urlParams.get('gift');
 
-      // Hediye geldiğinde görünür yap
-      box.style.visibility = 'visible';
+        if (gift) {
+            const box = document.getElementById('gift-box');
+            box.innerText = `🎁 Hediye Geldi: ${gift}`;
+            box.style.display = 'block'; // Hediye kutusunu göster
 
-      // 5 saniye sonra gizle
-      setTimeout(() => {
-        box.style.visibility = 'hidden';
-      }, 5000); // 5000 ms = 5 saniye
-    }
-  </script>
+            // 5 saniye sonra kutuyu gizle
+            setTimeout(() => {
+                box.style.display = 'none';
+            }, 5000);
+        }
+    </script>
 </body>
-
 </html>
